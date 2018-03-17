@@ -214,7 +214,6 @@ int main()
 	t.traverseInOrder();
 	cout<<"Starting print\n";
 	
-	//t.start()->printData();
 	for(it = t.start(); it!=t.end();++it)
 	{
 		it->printData();
