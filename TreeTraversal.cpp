@@ -4,9 +4,6 @@
 
 using namespace std;
 
-
-
-
 template <typename T>
 class BinarySearchTree
 {
@@ -62,15 +59,7 @@ class BinarySearchTree
 		}
 		operator ++()
 		{
-			if(currNode->isRightThread == false)
-			{
-				currNode = currNode->right;
-			}
-			else if(currNode->isRightThread == true)
-			{
-				currNode = currNode->right;
-			}
-			
+			currNode = currNode->right;
 		}
 		operator ==(const iterator &other)
 		{
@@ -201,7 +190,7 @@ int main()
 	t.insertNode(12);
 	t.insertNode(4);
 	t.insertNode(5);
-	t.insertNode(6);
+	t.insertNode(26);
 	t.insertNode(7);
 	t.insertNode(8);
 	t.insertNode(9);
