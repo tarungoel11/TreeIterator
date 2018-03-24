@@ -178,43 +178,44 @@ class BinarySearchTree
 		traverseInOrderUtil(root->right);
 	}
 	
-	traverseInOrderNonRecursive()
+	void traverseInOrderNonRecursive()
 	{
 		stack <TreeNode*> st;
 		TreeNode *curr = root->right;
 		
 		
-		while(curr)
+		while(1)
 		{
-			
-			if(curr->left && curr->isLeftThread == false)
+			while(curr)
 			{
 				st.push(curr);
-				curr = curr->left;
-			}
-			else
-			{
-				while(curr)
+				if(curr->left && curr->isLeftThread==false)
 				{
-					
-				curr->printData();
-				if(curr->right && curr->isRightThread == false)
-				{
-					curr=curr->right;
+					curr=curr->left;
 				}
 				else
 				{
-					if(!st.empty())
-					{
-						curr=st.top();
-						st.pop();
-					}
-					else
-					{
-						curr= NULL;
-					}
+					curr = NULL;
 				}
+			}
+			
+			if(!st.empty())
+			{
+				curr= st.top();
+				st.pop();
+				curr->printData();
+				if(curr->right && curr->isRightThread==false)
+				{
+					curr= curr->right;
 				}
+				else
+				{
+					curr = NULL;
+				}
+			}
+			else
+			{
+				return;
 			}
 			
 		}
