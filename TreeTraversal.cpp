@@ -1,6 +1,7 @@
 //iterator for BS tree traversal
 // inorder threaded tree
 #include<iostream>
+#include<stack>
 
 using namespace std;
 
@@ -177,6 +178,48 @@ class BinarySearchTree
 		traverseInOrderUtil(root->right);
 	}
 	
+	traverseInOrderNonRecursive()
+	{
+		stack <TreeNode*> st;
+		TreeNode *curr = root->right;
+		
+		
+		while(curr)
+		{
+			
+			if(curr->left && curr->isLeftThread == false)
+			{
+				st.push(curr);
+				curr = curr->left;
+			}
+			else
+			{
+				while(curr)
+				{
+					
+				curr->printData();
+				if(curr->right && curr->isRightThread == false)
+				{
+					curr=curr->right;
+				}
+				else
+				{
+					if(!st.empty())
+					{
+						curr=st.top();
+						st.pop();
+					}
+					else
+					{
+						curr= NULL;
+					}
+				}
+				}
+			}
+			
+		}
+	}
+	
 };
 
 
@@ -200,8 +243,10 @@ int main()
 	BinarySearchTree <int> :: iterator it;
 	int i =0;
 	
-	t.traverseInOrder();
-	cout<<"Starting print\n";
+	cout<<"Starting traversal\n";
+	t.traverseInOrderNonRecursive();
+	
+	cout<<"Starting iterator\n";
 	
 	for(it = t.start(); it!=t.end();++it)
 	{
