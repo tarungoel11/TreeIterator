@@ -2,6 +2,7 @@
 // inorder threaded tree
 #include<iostream>
 #include<stack>
+#include<queue>
 
 using namespace std;
 
@@ -221,6 +222,28 @@ class BinarySearchTree
 		}
 	}
 	
+	void traversePreOrderNonRecursive()
+	{
+		queue <TreeNode*> q;
+		TreeNode *curr = root->right;
+		q.push(curr);
+		
+		while(!q.empty())
+		{
+			curr = q.front();
+			q.pop();
+			curr->printData();
+			if(curr->left && curr->isLeftThread==false)
+			{
+				q.push(curr->left);
+			}
+			if(curr->right && curr->isRightThread==false)
+			{
+				q.push(curr->right);
+			}
+		}
+		
+	}
 };
 
 
@@ -245,7 +268,8 @@ int main()
 	int i =0;
 	
 	cout<<"Starting traversal\n";
-	t.traverseInOrderNonRecursive();
+	//t.traverseInOrderNonRecursive();
+	t.traversePreOrderNonRecursive();
 	
 	cout<<"Starting iterator\n";
 	
