@@ -244,6 +244,36 @@ class BinarySearchTree
 		}
 		
 	}
+	
+	traversePostorderIterative()
+	{
+		stack<TreeNode*> st, st1;
+		TreeNode *curr = root->right;
+		st.push(curr);
+		
+		while(!st.empty())
+		{
+			curr = st.top();
+			st.pop();
+			
+			st1.push(curr);
+			if(curr->left && curr->isLeftThread==false)
+			{
+				st.push(curr->left);
+			}
+			if(curr->right && curr->isRightThread==false)
+			{
+				st.push(curr->right);
+			}
+		}
+		
+		while(!st1.empty())
+		{
+			curr = st1.top();
+			st1.pop();
+			curr->printData();
+		}
+	}
 };
 
 
@@ -269,7 +299,7 @@ int main()
 	
 	cout<<"Starting traversal\n";
 	//t.traverseInOrderNonRecursive();
-	t.traversePreOrderNonRecursive();
+	t.traversePostorderIterative();
 	
 	cout<<"Starting iterator\n";
 	
