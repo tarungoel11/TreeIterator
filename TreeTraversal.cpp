@@ -7,26 +7,26 @@
 using namespace std;
 
 template <typename T>
-class BinarySearchTree
+class ThreadedBinarySearchTree
 {
-	struct TreeNode
+	struct ThreadedTreeNode
 	{
-		TreeNode *left;
-		TreeNode *right;
+		ThreadedTreeNode *left;
+		ThreadedTreeNode *right;
 		bool isLeftThread;
 		bool isRightThread;
 		T data;
-		TreeNode():left(NULL), right(NULL), isLeftThread(false), isRightThread(false)
+		ThreadedTreeNode():left(NULL), right(NULL), isLeftThread(false), isRightThread(false)
 		{
 		}
-		TreeNode(T value):data(value), left(NULL), right(NULL), isLeftThread(false), isRightThread(false)
+		ThreadedTreeNode(T value):data(value), left(NULL), right(NULL), isLeftThread(false), isRightThread(false)
 		{
 		}
 		printData()
 		{
 			cout<<"data "<<data<<endl;
 		}
-		setRightThread(TreeNode *node)
+		setRightThread(ThreadedTreeNode *node)
 		{
 			isRightThread = true;
 			right = node;
@@ -279,7 +279,7 @@ class BinarySearchTree
 
 int main()
 {
-	BinarySearchTree <int>t;
+	ThreadedBinarySearchTree <int>t;
 	
 	t.insertNode(10);
 	t.insertNode(1);
@@ -294,7 +294,7 @@ int main()
 	t.insertNode(11);
 	
 	
-	BinarySearchTree <int> :: iterator it;
+	ThreadedBinarySearchTree <int> :: iterator it;
 	int i =0;
 	
 	cout<<"Starting traversal\n";
